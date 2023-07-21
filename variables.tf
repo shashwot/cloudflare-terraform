@@ -26,8 +26,7 @@ variable "hosts" {
 }
 
 variable "waf" {
-  type = map(object({
-    zone                  = string
+  type = object({
     name                  = string
     description           = string
     kind                  = string
@@ -36,13 +35,12 @@ variable "waf" {
     expression            = string
     rule_description      = string
     enabled               = bool
-  }))
+  })
 }
 
 
 variable "security" {
-  type = map(object({
-    zone                      = string
+  type = object({
     brotli                    = string
     challenge_ttl             = number
     security_level            = string
@@ -61,5 +59,5 @@ variable "security" {
     security_header_max_age = number
     security_header_no_sniff = bool
     security_header_preload = bool
-    }))
+  })
 }

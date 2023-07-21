@@ -1,6 +1,5 @@
 variable "security" {
-  type = map(object({
-    zone                      = string
+  type = object({
     brotli                    = string
     challenge_ttl             = number
     security_level            = string
@@ -19,5 +18,10 @@ variable "security" {
     security_header_max_age = number
     security_header_no_sniff = bool
     security_header_preload = bool
-    }))
+  })
+}
+
+variable "zones" {
+  description = "List of zone names"
+  type        = list(string)
 }

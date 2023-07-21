@@ -1,20 +1,20 @@
 data "cloudflare_zone" "this" {
-  for_each      = var.waf
-  name          = each.value.zone
+  for_each      = toset(var.zones)
+  name          = each.key
 }
 
 resource "cloudflare_ruleset" "zone_custom_firewall" {
-  for_each    = var.waf
-  zone_id     = data.cloudflare_zone.this[each.key].id
-  name        = each.value.name
-  description = each.value.description
-  kind        = each.value.kind
-  phase       = each.value.phase
+  for_each    = data.cloudflare_zone.this
+  zone_id     = each.value.id
+  name        = var.waf.name
+  description = var.waf.description
+  kind        = var.waf.kind
+  phase       = var.waf.phase
 
   rules {
-    action      = each.value.action
-    expression  = each.value.expression
-    description = each.value.rule_description
-    enabled     = each.value.enabled
+    action      = var.waf.action
+    expression  = var.waf.expression
+    description = var.waf.rule_description
+    enabled     = var.waf.enabled
   }
 }

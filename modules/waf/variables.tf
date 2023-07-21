@@ -1,6 +1,5 @@
 variable "waf" {
-  type = map(object({
-    zone                  = string
+  type = object({
     name                  = string
     description           = string
     kind                  = string
@@ -9,5 +8,10 @@ variable "waf" {
     expression            = string
     rule_description      = string
     enabled               = bool
-  }))
+  })
+}
+
+variable "zones" {
+  description = "List of zone names"
+  type        = list(string)
 }
