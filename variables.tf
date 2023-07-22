@@ -61,3 +61,8 @@ variable "security" {
     security_header_preload = bool
   })
 }
+
+variable "aopr_enabled" {
+  type    = bool
+  default = false
+}

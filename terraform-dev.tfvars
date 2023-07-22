@@ -5,6 +5,8 @@ cloudflare_account_id = "8bejuv79fbf9f6r93bdksdfye8340hsdfof75"
 # Create Hosted Zones
 zones = ["example.tf", "example2.tf"]
 
+aopr_enabled = true
+
 # Configure Domains
 hosts = {
   "secure.example.tf" = {

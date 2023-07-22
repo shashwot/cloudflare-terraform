@@ -36,3 +36,14 @@ module "security" {
     module.zones
   ]
 }
+
+
+module "authenticated_origin_pull" {
+  source = "./modules/authenticated_origin_pull"
+
+  zones   = var.zones
+  aopr_enabled = var.aopr_enabled
+  depends_on = [
+    module.zones
+  ]
+}
