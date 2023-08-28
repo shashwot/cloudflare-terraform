@@ -1,7 +1,8 @@
 # Zones
 output "zone_ids" {
   description = "Cloudflare Zone IDs"
-  value       = cloudflare_zone.zones[*].id
+  value       = { for key, zone in cloudflare_zone.zones : key => zone.id }
 }
+
 
 
